@@ -86,7 +86,7 @@ func (cc *ClientCmd) GetClientCmd() *cobra.Command {
 		Use:   "client <clientID>",
 		Short: "gets a single mobile client in the namespace",
 		Long: `get client allows you to view client information for a specific mobile client in your namespace.
-Run the "mobile get clients" command from this tool to get the mobile client ID.`,
+Run the "mobile get clients" command from this tool to get the client ID.`,
 		Example: `  mobile get client <clientID> --namespace=myproject 
   kubectl plugin mobile get client <clientID>
   oc plugin mobile get client <clientID>`,
@@ -203,10 +203,10 @@ func (cc *ClientCmd) DeleteClientCmd() *cobra.Command {
 		Use:   "client <clientID>",
 		Short: "deletes a single mobile client in the namespace",
 		Long: `delete client allows you to delete a single mobile client in your namespace.
-Firstly, to see a list of mobile clients run the "mobile get clients" command from this tool. 
-Once you have identified a client ID, run:
-		
-mobile delete client <clientID>`,
+Run the "mobile get clients" command from this tool to get the client ID.`,
+		Example: `  mobile delete client <clientID> --namespace=myproject 
+  kubectl plugin mobile delete client <clientID>
+  oc plugin mobile delete client <clientID>`,
 		RunE: func(cmd *cobra.Command, args []string) error {
 			var err error
 			var ns string
