@@ -139,11 +139,9 @@ func findServiceClassByName(scClient versioned.Interface, name string) (*v1beta1
 		}
 	}
 	return nil, errors.New("failed to find serviceclass with name: " + name)
-
 }
 
 func findServicePlanByNameAndClass(scClient versioned.Interface, planName, serviceClassName string) (*v1beta1.ClusterServicePlan, error) {
-
 	plans, err := scClient.ServicecatalogV1beta1().ClusterServicePlans().List(metav1.ListOptions{})
 	if err != nil {
 		return nil, err
@@ -243,7 +241,6 @@ create serviceinstance <selectedServiceName>`,
 					instParams.Properties[k] = v
 				}
 			} else {
-
 				scanner := bufio.NewScanner(os.Stdin)
 				for k, v := range instParams.Properties {
 					questionFormat := "Set value for %s [default value: %s required: %v]"
@@ -427,7 +424,6 @@ mobile get services`,
 		scL := serviceInstances.(*v1beta1.ServiceInstanceList)
 		var data [][]string
 		for _, item := range scL.Items {
-
 			data = append(data, []string{item.Spec.ClusterServiceClassExternalName, item.Name})
 		}
 		table := tablewriter.NewWriter(writer)
